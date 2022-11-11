@@ -1,0 +1,20 @@
+<% for(var i=0; i< materials.length; i++) { %>
+<tr>
+  <td><%= i+1 %></td>
+  <td><%= materials[i].reference %></td>
+  <td><%= materials[i].description %></td>
+  <% if(materials[i].statut) {%>
+  <td>Preté</td>
+  <% } else {%>
+  <td>En stock</td>
+  <% } %>
+  <td>
+    <a href="/update-material?id=<%= materials[i]._id %>" class="btn border-shadow update">
+      <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+    </a>
+    <a class="btn border-shadow delete" data-id= <%= materials[i]._id %> >
+      <span class="text-gradient"><i class="fas fa-times"></i></span>
+    </a>
+  </td>
+</tr>
+<% } %>

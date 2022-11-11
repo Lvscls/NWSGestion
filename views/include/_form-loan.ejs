@@ -1,0 +1,48 @@
+    <!-- form handling-->
+    <form action="/api/loans" method="POST" id="add_loan">
+        <div class="new_material">
+          <div class="form-group">
+            <label for="reference" class="text-light">Email</label>
+            <input type="hidden" name="id" value="" />
+            <input
+              type="email"
+              name="email"
+              value=""
+              placeholder="example@mail.fr"
+            />
+          </div>
+          <div class="form-group">
+            <label for="startDate" class="text-light">Date du prêt</label>
+            <input
+              type="date"
+              name="startDate"
+              value=""
+            />
+          </div>
+          <div class="form-group">
+            <label for="endDate" class="text-light">Date de fin</label>
+            <input
+            type="date"
+            name="endDate"
+            value=""
+          />
+          </div>
+          <div class="form-group">
+            <label for="Materiel" class="text-light">Materiel</label>
+            <select name="material" id="material">
+              <% for(var i=0; i< materials.length; i++) { %>
+                <% if(materials[i].statut === false ) {%>
+              <option value="<%= materials[i]._id %>"><%= materials[i].reference %></option>
+              <% } %>
+              <% } %>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <button type="submit" class="btn text-dark update">
+              Enregistrer
+            </button>
+          </div>
+        </div>
+      </form>
+      <!--/form handling-->

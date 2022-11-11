@@ -1,0 +1,30 @@
+<!--include header-->
+<%- include('include/_header') %>
+<!--/include header-->
+
+<!--Main section-->
+<main id="site-main">
+  <div class="container">
+    <div class="box-nav d-flex justify-between">
+      <div class="filter">
+        <a href="/loans"
+          ><i class="fas fa-angle-double-left"></i>Tous les prêt</a
+        >
+      </div>
+    </div>
+    <div class="form-title text-center">
+      <h2 class="text-dark">Nouveau prêt</h2>
+      <span class="text-light"
+        >Ajouter un prêt grâce au formulaire ci-dessous</span
+      >
+    </div>
+    <!--add material form-->
+    <%- include('include/_form-loan') %>
+    <!--/add material form-->
+  </div>
+</main>
+<!--/Main section-->
+
+<!--include footer-->
+<%- include('include/_footer') %>
+<!--/include footer-->

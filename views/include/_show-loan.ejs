@@ -1,0 +1,15 @@
+
+<% for(var i=0; i< loans.length; i++) { %>
+  <tr>
+    <td><%= i+1 %></td>
+    <td><%= loans[i].email %></td>
+    <td><%= moment(loans[i].startDate).format('DD/MM/YYYY') %></td>
+    <td><%= moment(loans[i].endDate).format('DD/MM/YYYY') %></td>
+    <td><%= loans[i].material %></td>
+    <td>
+      <a class="btn border-shadow delete" data-id= <%= loans[i]._id %> >
+        <span class="text-gradient"><i class="fas fa-times"></i></span>
+      </a>
+    </td>
+  </tr>
+  <% } %>
