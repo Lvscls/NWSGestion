@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const bodyparser = require("body-parser");
 const path = require("path");
+var cors = require('cors')
 
 const connectDB = require('./server/database/connection')
 
@@ -19,6 +20,7 @@ connectDB();
 
 //parse request to body-parser
 app.use(bodyparser.urlencoded({ extended: true }));
+app.use(cors())
 
 //set view engine
 app.set("view engine", "ejs");
