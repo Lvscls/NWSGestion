@@ -1,5 +1,6 @@
 var Loandb = require("../model/loanModel");
 var Materialdb = require("../model/materialModel");
+const sendEmailLoanMaterial = require("../services/mail/sendEmailLoanMaterial");
 
 //create loan
 exports.create = (req, res) => {
@@ -19,8 +20,10 @@ exports.create = (req, res) => {
 
   loan
     .save(loan)
-    .then((data) => {
+    .then(async (data) => {
       res.redirect("/add-loan");
+      console.log("data is " + data);
+      await sendEmailLoanMaterial(data);
     })
     .catch((err) => {
       res.status(500).send({ message: err.message });
