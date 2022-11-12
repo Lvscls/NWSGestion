@@ -32,6 +32,7 @@ if (window.location.pathname == "/") {
     var id = $(this).attr("data-id");
     var request = {
       url: `http://localhost:3000/api/materials/${id}`,
+      contentType: "application/json",
       crossDomain: true,
       method: "DELETE",
     };
