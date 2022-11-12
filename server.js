@@ -21,7 +21,7 @@ connectDB();
 //parse request to body-parser
 app.use(bodyparser.urlencoded({ extended: true }));
 const corsOptions ={
-  origin:'http://localhost:3000', 
+  origin:'https://lilian.iamroot.fr', 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200
 }
