@@ -31,7 +31,7 @@ if (window.location.pathname == "/") {
   $ondelete.click(function () {
     var id = $(this).attr("data-id");
     var request = {
-      url: `http://localhost:3000/api/materials/${id}`,
+      url: `${window.location.hostname}/api/materials/${id}`,
       contentType: "application/json",
       headers: {
         "accept": "application/json",
