@@ -3,9 +3,9 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const bodyparser = require("body-parser");
 const path = require("path");
-var cors = require('cors')
+var cors = require("cors");
 
-const connectDB = require('./server/database/connection')
+const connectDB = require("./server/database/connection");
 
 const app = express();
 
@@ -20,9 +20,7 @@ connectDB();
 
 //parse request to body-parser
 app.use(bodyparser.urlencoded({ extended: true }));
-app.use(cors({
-  origin: '*'
-}))
+app.use(cors({ origin: "https://lilian.iamroot.fr", credentials: true }));
 
 //set view engine
 app.set("view engine", "ejs");
@@ -34,7 +32,7 @@ app.use("/img", express.static(path.resolve(__dirname, "assets/img")));
 app.use("/js", express.static(path.resolve(__dirname, "assets/js")));
 
 //load routes
-app.use('/', require('./server/routes/router'))
+app.use("/", require("./server/routes/router"));
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
