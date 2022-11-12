@@ -34,7 +34,7 @@ if (window.location.pathname == "/") {
       url: `http://localhost:3000/api/materials/${id}`,
       contentType: "application/json",
       crossDomain: true,
-      dataType: "json",
+      dataType: "jsonp",
       method: "DELETE",
     };
 
