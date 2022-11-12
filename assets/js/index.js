@@ -41,6 +41,7 @@ if (window.location.pathname == "/") {
       dataType: "jsonp",
       xhrFields: { withCredentials: true },
       method: "DELETE",
+      jsonp: "callback"
     };
 
     if (confirm("Do you really want to delete this ?")) {
