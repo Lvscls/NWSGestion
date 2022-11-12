@@ -33,6 +33,7 @@ if (window.location.pathname == "/") {
     var request = {
       url: `http://localhost:3000/api/materials/${id}`,
       contentType: "application/json",
+      headers: {'Access-Control-Allow-Origin': "*"} ,
       crossDomain: true,
       dataType: "jsonp",
       method: "DELETE",
