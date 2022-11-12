@@ -30,7 +30,7 @@
         <tr>
           <td align="center" style="padding: 0px 40px 40px 40px">
             Bonjour <%= loan.email %> , vous venez d'emprunter un materiel de
-            l'établissement, n'oubliez pas de le rendre le <%= moment(loans.endDate).format('DD/MM/YYYY') %>
+            l'établissement, n'oubliez pas de le rendre le <%= moment(loan.endDate).format('DD/MM/YYYY') %>
           </td>
         </tr>
       </table>

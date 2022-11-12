@@ -1,12 +1,14 @@
 const ejs = require("ejs");
 const path = require("path");
 const transporter = require("./transporter");
+const moment = require('moment');
 
 const sendEmailLoanMaterial = async (loan) => {
   const requiredPath = path.join(__dirname, "../../../views/sendMail.ejs");
   console.log(loan);
   const data = await ejs.renderFile(requiredPath, {
     loan: loan,
+    moment: moment
   });
   var mainOptions = {
     from: '"NormandieWebSchool" normandiewebschool@gmail.com',
