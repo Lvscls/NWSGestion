@@ -17,7 +17,6 @@ $("#update_material").submit(function (event) {
 
   var request = {
     url: `http://localhost:3000/api/materials/${data.id}`,
-    header: 'Access-Control-Allow-Origin',
     method: "PUT",
     data: data,
   };
@@ -32,8 +31,7 @@ if (window.location.pathname == "/") {
   $ondelete.click(function () {
     var id = $(this).attr("data-id");
     var request = {
-      url: `http://localhost:3000/api/materials/${id}`,
-      header: 'Access-Control-Allow-Origin',
+      url: `https://lilian.iamroot.fr/api/materials/${id}`,
       method: "DELETE",
     };
 
@@ -52,7 +50,6 @@ if (window.location.pathname == "/loans") {
     var id = $(this).attr("data-id");
     var request = {
       url: `http://localhost:3000/api/loans/${id}`,
-      header: 'Access-Control-Allow-Origin',
       method: "DELETE",
     };
 
@@ -69,7 +66,6 @@ if (window.location.pathname == "/loans") {
     var id = $(this).attr("data-id");
     var request = {
       url: `http://localhost:5000/api/loans?${id}`,
-      header: 'Access-Control-Allow-Origin',
       method: "GET",
     };
 
