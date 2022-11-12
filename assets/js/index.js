@@ -31,7 +31,8 @@ if (window.location.pathname == "/") {
   $ondelete.click(function () {
     var id = $(this).attr("data-id");
     var request = {
-      url: `https://lilian.iamroot.fr/api/materials/${id}`,
+      url: `http://localhost:3000/api/materials/${id}`,
+      crossDomain: true,
       method: "DELETE",
     };
 
