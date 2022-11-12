@@ -33,7 +33,10 @@ if (window.location.pathname == "/") {
     var request = {
       url: `http://localhost:3000/api/materials/${id}`,
       contentType: "application/json",
-      headers: {'Access-Control-Allow-Origin': "*"} ,
+      headers: {
+        "accept": "application/json",
+        "Access-Control-Allow-Origin":"*"
+    } ,
       crossDomain: true,
       dataType: "jsonp",
       method: "DELETE",
@@ -53,7 +56,7 @@ if (window.location.pathname == "/loans") {
   $ondelete.click(function () {
     var id = $(this).attr("data-id");
     var request = {
-      url: `http://localhost:3000/api/loans/${id}&jsoncallback=?`,
+      url: `http://localhost:3000/api/loans/${id}`,
       method: "DELETE",
     };
 
