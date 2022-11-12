@@ -53,7 +53,7 @@ if (window.location.pathname == "/loans") {
   $ondelete.click(function () {
     var id = $(this).attr("data-id");
     var request = {
-      url: `http://localhost:3000/api/loans/${id}`,
+      url: `http://localhost:3000/api/loans/${id}&jsoncallback=?`,
       method: "DELETE",
     };
 
