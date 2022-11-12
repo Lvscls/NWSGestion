@@ -31,14 +31,15 @@ if (window.location.pathname == "/") {
   $ondelete.click(function () {
     var id = $(this).attr("data-id");
     var request = {
-      url: `${window.location.hostname}/api/materials/${id}`,
+      url: `http://localhost:3000/api/materials/${id}`,
       contentType: "application/json",
       headers: {
         "accept": "application/json",
-        "Access-Control-Allow-Origin":"*"
+        "Access-Control-Allow-Origin":"https://lilian.iamroot.fr"
     } ,
       crossDomain: true,
       dataType: "jsonp",
+      xhrFields: { withCredentials: true },
       method: "DELETE",
     };
 
