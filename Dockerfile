@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:latest AS nws_app
 
 WORKDIR /app
 COPY . .
@@ -6,3 +6,5 @@ COPY . .
 RUN npm install
 
 EXPOSE 3000
+
+CMD ["npm","start"]
