@@ -1,6 +1,7 @@
 var Loandb = require("../model/loanModel");
 var Materialdb = require("../model/materialModel");
 const sendEmailLoanMaterial = require("../services/mail/sendEmailLoanMaterial");
+const sendReminderEmailLoanMaterial = require('../services/mail/sendReminderMailLoanMaterial')
 
 //create loan
 exports.create = (req, res) => {
@@ -47,11 +48,12 @@ exports.find = (req, res) => {
     const id = req.query.id;
 
     Loandb.findById(id)
-      .then((data) => {
+      .then(async (data) => {
         if (!data) {
           res.status(404).send({ message: "Cannot find loan" });
         } else {
           res.send(data);
+          await sendReminderEmailLoanMaterial(data);
         }
       })
       .catch((err) => {

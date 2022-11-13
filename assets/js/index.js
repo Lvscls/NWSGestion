@@ -72,14 +72,17 @@ if (window.location.pathname == "/loans") {
       .then((res) => console.log(res));
   });
 
-  // $onsend = $(".table tbody td a.mail");
-  // $onsend.click(function () {
-  //   var id = $(this).attr("data-id");
-  //   var request = {
-  //     url: `http://localhost:5000/api/loans?${id}`,
-  //     method: "GET",
-  //   };
-
+  $onsend = $(".table tbody td a.mail");
+  $onsend.click(function () {
+    var id = $(this).attr("data-id");
+    fetch(`https://lilian.iamroot.fr/api/loans/${id}`, {
+      method: "GET",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
+      .then(alert("Mail send Successfully"), location.reload())
+  });
   //   {
   //     $.ajax(request).done(function (response) {
   //       const requiredPath = path.join(__dirname, "../../views/sendMail.ejs");
