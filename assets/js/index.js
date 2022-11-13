@@ -50,7 +50,7 @@ if (window.location.pathname == "/") {
     fetch(`http://localhost:3000/api/materials/${id}`, {
       method: "DELETE",
       headers: {
-        "Access-Control-Allow-Origin": "https://lilian.iamroot.fr",
+        "Access-Control-Allow-Origin": "*",
       },
     }).then(alert("Data deleted Successfully"), location.reload());
   });
@@ -63,7 +63,7 @@ if (window.location.pathname == "/loans") {
     fetch(`http://localhost:3000/api/loans/${id}`, {
       method: "DELETE",
       headers: {
-        "Access-Control-Allow-Origin": "https://lilian.iamroot.fr",
+        "Access-Control-Allow-Origin": "*",
       },
     }).then((res) => alert("Data deleted Successfully"), location.reload());
   });
