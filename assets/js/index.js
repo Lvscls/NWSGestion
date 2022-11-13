@@ -13,7 +13,7 @@ $("#update_material").submit(function (event) {
 
   console.log(data);
   var request = {
-    url: `http://localhost:3000/api/materials/${data.id}`,
+    url: `https://lilian.iamroot.fr/api/materials/${data.id}`,
     method: "PUT",
     data: data,
   };
@@ -52,7 +52,9 @@ if (window.location.pathname == "/") {
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
-    }).then((res) => console.log(res));
+    })
+      .then(alert("Data deleted Successfully"), location.reload())
+      .then((res) => console.log(res));
   });
 }
 
@@ -60,7 +62,7 @@ if (window.location.pathname == "/loans") {
   $ondelete = $(".table tbody td a.delete");
   $ondelete.click(function () {
     var id = $(this).attr("data-id");
-    fetch(`http://localhost:3000/api/loans/${id}`, {
+    fetch(`https://lilian.iamroot.fr/api/loans/${id}`, {
       method: "DELETE",
       headers: {
         "Access-Control-Allow-Origin": "*",
