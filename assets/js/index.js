@@ -47,7 +47,7 @@ if (window.location.pathname == "/") {
   $ondelete = $(".table tbody td a.delete");
   $ondelete.click(function () {
     var id = $(this).attr("data-id");
-    fetch(`http://localhost:3000/api/materials/${id}`, {
+    fetch(`https://lilian.iamroot.fr/api/materials/${id}`, {
       method: "DELETE",
       headers: {
         "Access-Control-Allow-Origin": "*",
