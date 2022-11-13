@@ -52,7 +52,7 @@ if (window.location.pathname == "/") {
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
-    }).then(alert("Data deleted Successfully"), location.reload());
+    }).then(alert("Data deleted Successfully"), location.reload()).then((res) => console.log(res));
   });
 }
 
@@ -65,7 +65,7 @@ if (window.location.pathname == "/loans") {
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
-    }).then((res) => alert("Data deleted Successfully"), location.reload());
+    }).then((res) => alert("Data deleted Successfully"), location.reload()).then((res) => console.log(res));
   });
 
   // $onsend = $(".table tbody td a.mail");
