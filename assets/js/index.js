@@ -75,7 +75,7 @@ if (window.location.pathname == "/loans") {
   $onsend = $(".table tbody td a.mail");
   $onsend.click(function () {
     var id = $(this).attr("data-id");
-    fetch(`https://lilian.iamroot.fr/api/loans/${id}`, {
+    fetch(`https://lilian.iamroot.fr/api/loans?id=${id}`, {
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin": "*",
