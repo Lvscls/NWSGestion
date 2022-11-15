@@ -1,5 +1,5 @@
 $("#add_material").submit(function (event) {
-  alert("Data inserted Successfully");
+  alert("Matériel créé avec succès !");
 });
 
 $("#update_material").submit(function (event) {
@@ -19,7 +19,7 @@ $("#update_material").submit(function (event) {
   };
   console.log(request);
   $.ajax(request).done(function (response) {
-    alert("Data modified Successfully");
+    alert("Material modifié avec succès");
   });
   // const reference = document.querySelector('input[name="reference"]');
   // const description = document.querySelector('input[name="description"]');
@@ -45,16 +45,24 @@ $("#update_material").submit(function (event) {
 
 if (window.location.pathname == "/") {
   $ondelete = $(".table tbody td a.delete");
-  $ondelete.click(function () {
+  $ondelete.click(async function () {
     var id = $(this).attr("data-id");
-    fetch(`https://lilian.iamroot.fr/api/materials/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
-      .then(alert("Data deleted Successfully"), location.reload())
-      .then((res) => console.log(res));
+    const response = await fetch(`https://lilian.iamroot.fr/api/materials?=${id}`, {
+      method: "GET",
+    });
+    var data = await response.json();
+    if (data[0].statut === false) {
+      fetch(`https://lilian.iamroot.fr/api/materials/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
+        .then(alert("Materiel supprimé avec succès"), location.reload())
+        .then((res) => console.log(res));
+    } else if (data[0].statut === true) {
+      alert("Materiel en prêt, il est donc impossible de le supprimer");
+    }
   });
 }
 
@@ -68,7 +76,7 @@ if (window.location.pathname == "/loans") {
         "Access-Control-Allow-Origin": "*",
       },
     })
-      .then(alert("Data deleted Successfully"), location.reload())
+      .then(alert("Prêt terminé"), location.reload())
       .then((res) => console.log(res));
   });
 
@@ -80,8 +88,7 @@ if (window.location.pathname == "/loans") {
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
-    })
-      .then(alert("Mail send Successfully"), location.reload())
+    }).then(alert("Email envoyé"), location.reload());
   });
   //   {
   //     $.ajax(request).done(function (response) {
