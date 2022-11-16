@@ -10,7 +10,10 @@ var schema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    statut: Boolean,
+    statut: {
+        type: Boolean,
+        default: false,
+    }
 });
 
 const Materialdb= mongoose.model('materialdb', schema);

@@ -159,12 +159,15 @@ table {
 }
 
 #update_material .form-group,
-#add_material .form-group {
+#add_material .form-group,
+#add_loan .form-group {
   margin: 0.4em 0;
 }
 
 #update_material .form-group input[type="text"],
-#add_material .form-group input[type="text"] {
+#add_material .form-group input[type="text"],
+#add_loan .form-group input[type="email"],
+#add_loan .form-group input[type="date"] {
   width: 100%;
   padding: 0.6em 1em;
   margin: 0.5em 0;
