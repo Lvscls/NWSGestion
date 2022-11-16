@@ -1,3 +1,11 @@
+var url = "";
+if (window.location.hostname === "localhost") {
+  url = "http://localhost:3000";
+} else {
+  url = "https://lilian.iamroot.fr";
+}
+
+
 $("#add_material").submit(function (event) {
   alert("Matériel créé avec succès !");
 });
@@ -13,7 +21,7 @@ $("#update_material").submit(function (event) {
 
   console.log(data);
   var request = {
-    url: `https://lilian.iamroot.fr/api/materials/${data.id}`,
+    url: `${url}/api/materials/${data.id}`,
     method: "PUT",
     data: data,
   };
@@ -47,12 +55,12 @@ if (window.location.pathname == "/") {
   $ondelete = $(".table tbody td a.delete");
   $ondelete.click(async function () {
     var id = $(this).attr("data-id");
-    const response = await fetch(`https://lilian.iamroot.fr/api/materials?=${id}`, {
+    const response = await fetch(`${url}/api/materials?=${id}`, {
       method: "GET",
     });
     var data = await response.json();
     if (data[0].statut === false) {
-      fetch(`https://lilian.iamroot.fr/api/materials/${id}`, {
+      fetch(`${url}/api/materials/${id}`, {
         method: "DELETE",
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -70,7 +78,7 @@ if (window.location.pathname == "/loans") {
   $ondelete = $(".table tbody td a.delete");
   $ondelete.click(function () {
     var id = $(this).attr("data-id");
-    fetch(`https://lilian.iamroot.fr/api/loans/${id}`, {
+    fetch(`${url}/api/loans/${id}`, {
       method: "DELETE",
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -83,7 +91,7 @@ if (window.location.pathname == "/loans") {
   $onsend = $(".table tbody td a.mail");
   $onsend.click(function () {
     var id = $(this).attr("data-id");
-    fetch(`https://lilian.iamroot.fr/api/loans?id=${id}`, {
+    fetch(`${url}/api/loans?id=${id}`, {
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin": "*",

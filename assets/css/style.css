@@ -223,7 +223,8 @@ table {
 }
 
 #update_material .form-group .btn,
-#add_material .form-group .btn{
+#add_material .form-group .btn,
+#add_loan .form-group .btn{
     width: 100%;
     padding: .9em 1em;
     background-color: #ffdf78;
@@ -236,7 +237,8 @@ table {
 }
 
 #update_material .form-group .btn:hover,
-#add_material .form-group .btn:hover{
+#add_material .form-group .btn:hover,
+#add_loan .form-group .btn:hover{
     background-color: var(--dark);
     color: var(--border);
 }
