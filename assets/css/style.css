@@ -167,7 +167,8 @@ table {
 #update_material .form-group input[type="text"],
 #add_material .form-group input[type="text"],
 #add_loan .form-group input[type="email"],
-#add_loan .form-group input[type="date"] {
+#add_loan .form-group input[type="date"],
+#add_loan .form-group select {
   width: 100%;
   padding: 0.6em 1em;
   margin: 0.5em 0;
