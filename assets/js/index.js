@@ -59,7 +59,6 @@ if (window.location.pathname == "/") {
       method: "GET",
     });
     var data = await response.json();
-    console.log(data)
     if (data.statut === false) {
       await fetch(`${url}/api/materials/${id}`, {
         method: "DELETE",
