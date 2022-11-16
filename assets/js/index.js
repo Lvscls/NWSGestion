@@ -55,12 +55,13 @@ if (window.location.pathname == "/") {
   $ondelete = $(".table tbody td a.delete");
   $ondelete.click(async function () {
     var id = $(this).attr("data-id");
-    const response = await fetch(`${url}/api/materials?=${id}`, {
+    const response = await fetch(`${url}/api/materials?id=${id}`, {
       method: "GET",
     });
     var data = await response.json();
-    if (data[0].statut === false) {
-      fetch(`${url}/api/materials/${id}`, {
+    console.log(data)
+    if (data.statut === false) {
+      await fetch(`${url}/api/materials/${id}`, {
         method: "DELETE",
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -68,7 +69,7 @@ if (window.location.pathname == "/") {
       })
         .then(alert("Materiel supprimé avec succès"), location.reload())
         .then((res) => console.log(res));
-    } else if (data[0].statut === true) {
+    } else if (data.statut === true) {
       alert("Materiel en prêt, il est donc impossible de le supprimer");
     }
   });
