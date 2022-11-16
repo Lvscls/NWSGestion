@@ -41,17 +41,6 @@
               placeholder="Ordinateur portable mac"
             />
           </div>
-          <div class="form-group">
-            <label for="statut" class="text-light">Description</label>
-            <div class="radio inline">
-              <input type="radio" id="radio-2" name="statut" value="true" <%= material.statut == true?'checked':''%> >
-              <label for="radio-2" class="radio-label">En prêt</label>
-            </div>
-            <div class="radio inline">
-              <input type="radio" name="statut" id="radio-3" value="false" <%= material.statut == false?'checked':''%> >
-              <label for="radio-3" class="radio-label">En stock</label>
-            </div>
-          </div>
   
           <div class="form-group">
             <button type="submit" class="btn text-dark update">
