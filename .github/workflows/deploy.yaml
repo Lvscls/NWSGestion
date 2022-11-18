@@ -1,11 +1,12 @@
-name: deploy
-
 on: workflow_dispatch
+
+name: Deploy
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+    - name: connect ssh
     - run: |
         mkdir -p ~/.ssh
         ssh-keyscan ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
@@ -13,4 +14,7 @@ jobs:
     - uses: webfactory/ssh-agent@v0.5.4
       with:
         ssh-private-key: ${{ secrets.SSH_KEY }}
+    - name: docker compose
+    - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "docker compose -f docker-compose.prod.yaml pull"
     - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "docker compose -f docker-compose.prod.yaml up -d"
+    - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "docker image prune -f"    
