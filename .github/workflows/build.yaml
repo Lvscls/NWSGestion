@@ -16,5 +16,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ghcr.io/Lvscls/nws_app:latest
+          tags: ghcr.io/lvscls/nws_app:latest
           target: nws_app
