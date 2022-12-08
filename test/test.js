@@ -6,6 +6,8 @@ const { expect } = require("chai");
 chai.use(chaiHttp);
 let materialLength
 let materialId
+let loanLength
+let loanId
 
 describe("Get all Materials", () => {
   it("Return statusCode 200", (done) => {
@@ -89,7 +91,6 @@ describe("Post material & Delete new material", () => {
       .get("/api/materials/")
       .end((err, res) => {
         expect(res.body).to.have.lengthOf(materialLength + 1);
-        console.log(res.body[1])
         materialId = res.body[materialLength]._id.toString();
         done();
       });
@@ -114,6 +115,130 @@ describe("Post material & Delete new material", () => {
       });
   });
 });
+
+
+
+
+
+//LOAN
+describe("Get all Loans", () => {
+  it("Return statusCode 200", (done) => {
+    chai
+      .request(app)
+      .get("/api/loans/")
+      .end((err, res) => {
+        expect(res).to.have.property("statusCode", 200);
+        done();
+        loanLength = res.body.length;
+      });
+  });
+  it("Return all loans", (done) => {
+    chai
+      .request(app)
+      .get("/api/loans/")
+      .end((err, res) => {
+        expect(res.body).to.have.lengthOf(loanLength);
+        done();
+      });
+  });
+  it("Return array", (done) => {
+    chai
+      .request(app)
+      .get("/api/loans/")
+      .end((err, res) => {
+        expect(res.body).to.be.a("array");
+        done();
+      });
+  });
+});
+describe("Post material & Create loan", () => {
+    const material = {
+        reference: "Samsung Galaxy S3",
+        description: 'Tablette samsung'
+    }
+  it("Return statusCode 200", (done) => {
+    chai
+      .request(app)
+      .post("/api/materials/")
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send(material)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done()
+      });
+  });
+  it("Return the material", (done) => {
+    chai
+      .request(app)
+      .get("/api/materials/")
+      .end((err, res) => {
+        expect(res.body).to.have.lengthOf(materialLength + 1);
+        materialId = res.body[materialLength]._id.toString();
+        done();
+      });
+  });
+  it("Return statusCode 200", (done) => {
+    chai
+      .request(app)
+      .post("/api/loans/")
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({email:"test@test.com", startDate: Date.now(), endDate: '2022-12-30', material: materialId })
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done()
+      });
+  });
+  it("Return all loans", (done) => {
+    chai
+      .request(app)
+      .get("/api/loans")
+      .end((err, res) => {
+        expect(res.body).to.have.lengthOf(loanLength + 1);
+        loanId = res.body[loanLength]._id.toString();
+        done();
+      });
+  });
+  it("Return the loan", (done) => {
+    chai
+      .request(app)
+      .get(`/api/loans?id=${loanId}`)
+      .end((err, res) => {
+        expect(res.body).to.be.a("object");
+        done();
+      });
+  });
+  it("Delete loan", (done) => {
+    chai
+      .request(app)
+      .delete(`/api/loans/${loanId}`)
+      .end((err, res) => {
+        //console.log(res.body);
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it("Return all loan length", (done) => {
+    chai
+      .request(app)
+      .get("/api/loans/")
+      .end((err, res) => {
+        expect(res.body).to.have.lengthOf(loanLength);
+        done();
+      });
+  });
+  it("Delete Material", (done) => {
+    chai
+      .request(app)
+      .delete(`/api/materials/${materialId}`)
+      .end((err, res) => {
+        //console.log(res.body);
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+});
+
+
 // describe("PUT /api/materials/:id", (done) => {
 //     it("should update material", () => {
 //         request(app)
