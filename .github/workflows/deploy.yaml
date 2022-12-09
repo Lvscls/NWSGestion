@@ -6,7 +6,7 @@ on:
       - completed
 
 jobs:
- build-docker:
+  build-docker:
     runs-on: ubuntu-latest
     steps:
       - name: Login to GitHub Container Registry
