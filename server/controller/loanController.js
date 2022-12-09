@@ -13,7 +13,7 @@ exports.create = (req, res) => {
   //new loan
   const material = req.body.material;
   const loan = new Loandb({
-    email: req.body.email,
+    idStudent: req.body.idStudent,
     startDate: req.body.startDate,
     endDate: req.body.endDate,
     material: material,
