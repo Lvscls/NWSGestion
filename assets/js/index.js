@@ -5,10 +5,10 @@ if (window.location.hostname === "localhost") {
   url = "https://lilian.iamroot.fr";
 }
 
-
 $("#add_material").submit(function (event) {
   alert("Matériel créé avec succès !");
 });
+
 
 $("#update_material").submit(function (event) {
   event.preventDefault();

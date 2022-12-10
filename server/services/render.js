@@ -45,13 +45,25 @@ exports.allLoans = (req, res) => {
 
 //addLoan form
 exports.addLoan = (req, res) => {
+  let material = "http://localhost:3000/api/materials"
+  let student = "http://vps-a47222b1.vps.ovh.net:4242/Student"
+
+  const getMaterial = axios.get(material)
+  const getStudent = axios.get(student)
+
   axios
-  .get("http://localhost:3000/api/materials")
-  .then(function (response) {
-    console.log(response.data);
-    res.render("add_loan", { materials: response.data });
-  })
+  .all([getMaterial, getStudent])
+  .then(
+    axios.spread((...responses) => {
+      const responseOne = responses[0];
+      const responseTwo = responses[1];
+
+      // use/access the results
+      res.render("add_loan", { materials: responseOne.data, users: responseTwo.data });
+    })
+  )
   .catch((err) => {
-    res.send(err);
+    // res.send(err);
   });
+
 };

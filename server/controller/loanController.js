@@ -22,12 +22,12 @@ exports.create = (req, res) => {
   loan
     .save(loan)
     .then(async (data) => {
-      res.redirect("/add-loan");
-      console.log("data is " + data);
+      // res.send(data);
       await sendEmailLoanMaterial(data);
+      res.redirect('/add-loan')
     })
     .catch((err) => {
-      res.status(500).send({ message: err.message });
+      res.status(500).send({ message: err.message || "Some error happened" });
     });
   Materialdb.findByIdAndUpdate(
     material,
