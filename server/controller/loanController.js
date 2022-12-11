@@ -52,8 +52,8 @@ exports.find = (req, res) => {
         if (!data) {
           res.status(404).send({ message: "Cannot find loan" });
         } else {
-          res.send(data);
           await sendReminderEmailLoanMaterial(data);
+          res.send(data);
         }
       })
       .catch((err) => {
