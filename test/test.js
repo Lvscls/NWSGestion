@@ -182,7 +182,7 @@ describe("Post material & Create loan", () => {
       .request(app)
       .post("/api/loans/")
       .set('content-type', 'application/x-www-form-urlencoded')
-      .send({email:"test@test.com", startDate: Date.now(), endDate: '2022-12-30', material: materialId })
+      .send({idStudent: 1, startDate: Date.now(), endDate: '2022-12-30', material: materialId })
       .end((err, res) => {
         expect(res).to.have.status(200);
         done()
