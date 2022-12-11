@@ -2,7 +2,7 @@
 <% for(var i=0; i< loans.length; i++) { %>
   <tr>
     <td><%= i+1 %></td>
-    <td><%= loans[i].email %></td>
+    <td><%= loans[i].idStudent %></td>
     <td><%= moment(loans[i].startDate).format('DD/MM/YYYY') %></td>
     <td><%= moment(loans[i].endDate).format('DD/MM/YYYY') %></td>
     <td><%= loans[i].material %></td>

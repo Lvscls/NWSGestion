@@ -13,7 +13,7 @@ exports.create = (req, res) => {
   //new loan
   const material = req.body.material;
   const loan = new Loandb({
-    email: req.body.email,
+    idStudent: req.body.idStudent,
     startDate: req.body.startDate,
     endDate: req.body.endDate,
     material: material,
@@ -22,12 +22,12 @@ exports.create = (req, res) => {
   loan
     .save(loan)
     .then(async (data) => {
-      res.redirect("/add-loan");
-      console.log("data is " + data);
+      // res.send(data);
       await sendEmailLoanMaterial(data);
+      res.redirect('/add-loan')
     })
     .catch((err) => {
-      res.status(500).send({ message: err.message });
+      res.status(500).send({ message: err.message || "Some error happened" });
     });
   Materialdb.findByIdAndUpdate(
     material,
@@ -52,8 +52,8 @@ exports.find = (req, res) => {
         if (!data) {
           res.status(404).send({ message: "Cannot find loan" });
         } else {
-          res.send(data);
           await sendReminderEmailLoanMaterial(data);
+          res.send(data);
         }
       })
       .catch((err) => {
